@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
@@ -6,7 +8,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import dotenv from 'dotenv';
 
-import { linearTools, supabaseTools, vercelTools, scaffoldingTools, generatorTools } from './tools';
+import { linearTools, supabaseTools, vercelTools, scaffoldingTools, generatorTools } from './tools/index.js';
 
 // Load environment variables
 dotenv.config();

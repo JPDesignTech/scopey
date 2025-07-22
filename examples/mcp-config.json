@@ -1,16 +1,14 @@
 {
   "mcpServers": {
     "scopey": {
-      "command": "node",
-      "args": [
-        "../dist/index.js"
-      ],
+      "command": "npx",
+      "args": ["-y", "@jpdesign/scopey"],
       "env": {
-        "LINEAR_API_KEY": "${LINEAR_API_KEY}",
-        "SUPABASE_URL": "${SUPABASE_URL}",
-        "SUPABASE_ANON_KEY": "${SUPABASE_ANON_KEY}",
-        "VERCEL_TOKEN": "${VERCEL_TOKEN}",
-        "VERCEL_TEAM_ID": "${VERCEL_TEAM_ID}"
+        "LINEAR_API_KEY": "your_linear_api_key",
+        "SUPABASE_URL": "https://your-project.supabase.co",
+        "SUPABASE_ANON_KEY": "your_supabase_anon_key",
+        "VERCEL_TOKEN": "your_vercel_token",
+        "VERCEL_TEAM_ID": "your_vercel_team_id"
       }
     }
   }

@@ -1,0 +1,49 @@
+# Source files (we only want dist)
+src/
+scripts/
+examples/
+
+# Config files
+.env
+.env.*
+.cursorrules
+tsconfig.json
+.eslintrc.*
+.prettierrc
+
+# Development files
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js
+
+# Git
+.git/
+.gitignore
+
+# Documentation source
+docs/
+*.md
+!README.md
+!LICENSE
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Build artifacts not needed
+*.map 

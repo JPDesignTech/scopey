@@ -1,5 +1,8 @@
 # Scopey MCP Server
 
+[![npm version](https://badge.fury.io/js/@jpdesign%2Fscopey.svg)](https://www.npmjs.com/package/@jpdesign/scopey)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Scopey is a personal MCP (Model Context Protocol) server designed to streamline workflows and context management across your common technology stack. It acts as a centralized integration hub and scaffolding assistant for personal development projects.
 ![Scopey MCP Server Banner](https://replicate.delivery/xezq/ucKE0KSIuX6TLlxwqYU4fvIBKtYr7gAj4kWkVBUMqotoKrhKA/tmprrpnspnk.png)
 
@@ -12,57 +15,18 @@ Scopey is a personal MCP (Model Context Protocol) server designed to streamline 
 - **PRD Generation**: Generate PRDs based on provided code contexts and prompts
 - **Cursor Rule Generation**: Create Cursor rules from prompts
 
-## Installation
+## Quick Start
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/scopey-mcp-server.git
-cd scopey-mcp-server
-```
+### Option 1: Use with NPX (Recommended)
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file based on `.env.example`:
-```bash
-cp .env.example .env
-```
-
-4. Configure your API keys in the `.env` file:
-```env
-LINEAR_API_KEY=your_linear_api_key
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=your_supabase_anon_key
-VERCEL_TOKEN=your_vercel_token
-VERCEL_TEAM_ID=your_vercel_team_id
-```
-
-## Usage
-
-### Starting the Server
-
-```bash
-npm run build
-npm start
-```
-
-For development:
-```bash
-npm run dev
-```
-
-### Configuring MCP Client
-
-Add Scopey to your MCP client configuration:
+No installation required! Just add to your MCP client configuration:
 
 ```json
 {
-  "servers": {
+  "mcpServers": {
     "scopey": {
-      "command": "node",
-      "args": ["/path/to/scopey-mcp-server/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@jpdesign/scopey"],
       "env": {
         "LINEAR_API_KEY": "your_key",
         "SUPABASE_URL": "your_url",
@@ -73,6 +37,67 @@ Add Scopey to your MCP client configuration:
   }
 }
 ```
+
+### Option 2: Global Installation
+
+```bash
+npm install -g @jpdesign/scopey
+```
+
+Then use `scopey-mcp` command in your configuration:
+
+```json
+{
+  "mcpServers": {
+    "scopey": {
+      "command": "scopey-mcp",
+      "env": {
+        "LINEAR_API_KEY": "your_key",
+        "SUPABASE_URL": "your_url",
+        "SUPABASE_ANON_KEY": "your_key",
+        "VERCEL_TOKEN": "your_token"
+      }
+    }
+  }
+}
+```
+
+### Option 3: Install from Source
+
+```bash
+git clone https://github.com/yourusername/scopey-mcp-server.git
+cd scopey-mcp-server
+npm install
+npm run build
+npm link
+```
+
+## Configuration
+
+### Environment Variables
+
+Create a `.env` file with your API keys:
+
+```env
+LINEAR_API_KEY=your_linear_api_key
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your_supabase_anon_key
+VERCEL_TOKEN=your_vercel_token
+VERCEL_TEAM_ID=your_vercel_team_id  # Optional
+```
+
+### Claude Desktop Configuration
+
+Add Scopey to your Claude Desktop configuration:
+
+**Location by platform:**
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+- Linux: `~/.config/claude/claude_desktop_config.json`
+
+### Cursor Configuration
+
+Add to your Cursor settings or create `.vscode/mcp.json` in your workspace.
 
 ## Available Tools
 

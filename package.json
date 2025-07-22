@@ -1,24 +1,52 @@
 {
-  "name": "@scopey/mcp-server",
-  "version": "1.0.0",
+  "name": "@jpdesign/scopey",
+  "version": "1.0.2",
   "description": "Scopey MCP Server - A personal MCP server for streamlining workflows across Linear, Supabase, Vercel, and development scaffolding",
   "main": "dist/index.js",
   "type": "module",
+  "bin": {
+    "scopey-mcp": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "lint": "eslint src --ext .ts",
     "test": "jest",
-    "test:server": "node scripts/test-server.js"
+    "test:server": "node scripts/test-server.js",
+    "prepublishOnly": "npm run build",
+    "package": "npm run build && npm pack",
+    "register": "node scripts/register.js"
   },
-  "keywords": ["mcp", "server", "linear", "supabase", "vercel", "scaffolding"],
-  "author": "Scopey",
+  "keywords": [
+    "mcp",
+    "server",
+    "linear",
+    "supabase",
+    "vercel",
+    "scaffolding",
+    "ai",
+    "model-context-protocol",
+    "claude",
+    "cursor",
+    "developer-tools",
+    "automation"
+  ],
+  "author": "Jean - JPDesign.Tech",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.16.0",
-    "@supabase/supabase-js": "^2.52.0",
-    "@linear/sdk": "^53.0.0",
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "@supabase/supabase-js": "^2.39.0",
+    "@linear/sdk": "^23.0.0",
     "@vercel/client": "^15.0.0",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
@@ -40,5 +68,13 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JPDesignTech/scopey.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JPDesignTech/scopey/issues"
+  },
+  "homepage": "https://github.com/JPDesignTech/scopey#readme"
 }

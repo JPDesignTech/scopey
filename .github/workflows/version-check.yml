@@ -1,0 +1,33 @@
+name: Version Check
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'package.json'
+
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check version bump
+        run: |
+          # Get version from main branch
+          git show origin/main:package.json | grep '"version"' | cut -d'"' -f4 > main-version.txt
+          
+          # Get version from PR branch
+          grep '"version"' package.json | cut -d'"' -f4 > pr-version.txt
+          
+          echo "Main version: $(cat main-version.txt)"
+          echo "PR version: $(cat pr-version.txt)"
+          
+          # Simple check - in production you'd want proper semver comparison
+          if [ "$(cat main-version.txt)" = "$(cat pr-version.txt)" ]; then
+            echo "::warning::Version not bumped. Remember to bump version before merge if changes require a new release."
+          else
+            echo "✅ Version bumped from $(cat main-version.txt) to $(cat pr-version.txt)"
+          fi 
