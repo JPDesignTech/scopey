@@ -1,6 +1,7 @@
 # Scopey MCP Server
 
 Scopey is a personal MCP (Model Context Protocol) server designed to streamline workflows and context management across your common technology stack. It acts as a centralized integration hub and scaffolding assistant for personal development projects.
+![Scopey MCP Server Banner](https://replicate.delivery/xezq/ucKE0KSIuX6TLlxwqYU4fvIBKtYr7gAj4kWkVBUMqotoKrhKA/tmprrpnspnk.png)
 
 ## Features
 

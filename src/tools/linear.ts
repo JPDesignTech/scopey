@@ -1,6 +1,5 @@
 import { LinearClient } from '@linear/sdk';
 import { Tool, LinearTicketSchema } from '../utils/types.js';
-import { z } from 'zod';
 
 // Initialize Linear client
 const getLinearClient = () => {
@@ -142,13 +141,13 @@ export const linearTools: Tool[] = [
         if (assigneeId) filter.assignee = { id: { eq: assigneeId } };
         if (state) filter.state = { name: { eq: state } };
         
-        // Search with query if provided
+        // Search with query if provided - Linear SDK v23 uses a single parameter
         const issues = query
-          ? await linear.issueSearch(query, { filter, first: limit })
+          ? await linear.issueSearch(query)
           : await linear.issues({ filter, first: limit });
 
         const tickets = await Promise.all(
-          issues.nodes.map(async (issue) => ({
+          issues.nodes.slice(0, limit).map(async (issue) => ({
             id: issue.id,
             identifier: issue.identifier,
             title: issue.title,

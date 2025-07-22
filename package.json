@@ -9,7 +9,8 @@
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "lint": "eslint src --ext .ts",
-    "test": "jest"
+    "test": "jest",
+    "test:server": "node scripts/test-server.js"
   },
   "keywords": ["mcp", "server", "linear", "supabase", "vercel", "scaffolding"],
   "author": "Scopey",

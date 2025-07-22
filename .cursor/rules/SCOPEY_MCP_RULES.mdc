@@ -1,0 +1,139 @@
+---
+alwaysApply: true
+---
+
+# Scopey MCP Server - Cursor Rules
+
+## Project Overview
+This is an MCP (Model Context Protocol) server that integrates with Linear, Supabase, Vercel, and provides scaffolding and generation tools.
+
+## Key Technologies
+- TypeScript (strict mode)
+- Node.js 18+
+- MCP SDK
+- Linear SDK
+- Supabase Client
+- Axios for Vercel API
+
+## Code Style
+- Use functional programming patterns
+- Prefer async/await over callbacks
+- Use TypeScript strict mode
+- Organize imports: external packages first, then local imports
+- Use named exports (no default exports)
+
+## File Structure
+```
+src/
+├── index.ts          # Main server entry
+├── tools/            # Tool implementations
+│   ├── linear.ts     # Linear integration
+│   ├── supabase.ts   # Supabase integration
+│   ├── vercel.ts     # Vercel integration
+│   ├── scaffolding.ts # Project scaffolding
+│   └── generator.ts  # PRD and rules generation
+└── utils/            # Shared utilities
+    └── types.ts      # TypeScript types
+```
+
+## Error Handling
+- Always wrap async operations in try-catch
+- Provide meaningful error messages
+- Include original error details when re-throwing
+
+## Tool Development Guidelines
+1. Each tool must have a clear, descriptive name
+2. Input schemas must be well-documented
+3. Return consistent success/error response formats
+4. Validate inputs using Zod schemas where appropriate
+5. Keep handlers focused on a single responsibility
+
+## Testing
+- Test each tool independently
+- Verify error handling works correctly
+- Check that all required environment variables are validated
+
+## Security
+- Never log sensitive information (API keys, tokens)
+- Validate all inputs
+- Use read-only operations where specified (e.g., Supabase)
+- Sanitize any user-provided content in generators
+
+## Environment Variables
+Required:
+- LINEAR_API_KEY
+- SUPABASE_URL
+- SUPABASE_ANON_KEY
+- VERCEL_TOKEN
+
+Optional:
+- VERCEL_TEAM_ID
+- MCP_SERVER_PORT
+- NODE_ENV # Scopey MCP Server - Cursor Rules
+
+## Project Overview
+This is an MCP (Model Context Protocol) server that integrates with Linear, Supabase, Vercel, and provides scaffolding and generation tools.
+
+## Key Technologies
+- TypeScript (strict mode)
+- Node.js 18+
+- MCP SDK
+- Linear SDK
+- Supabase Client
+- Axios for Vercel API
+
+## Code Style
+- Use functional programming patterns
+- Prefer async/await over callbacks
+- Use TypeScript strict mode
+- Organize imports: external packages first, then local imports
+- Use named exports (no default exports)
+
+## File Structure
+```
+src/
+├── index.ts          # Main server entry
+├── tools/            # Tool implementations
+│   ├── linear.ts     # Linear integration
+│   ├── supabase.ts   # Supabase integration
+│   ├── vercel.ts     # Vercel integration
+│   ├── scaffolding.ts # Project scaffolding
+│   └── generator.ts  # PRD and rules generation
+└── utils/            # Shared utilities
+    └── types.ts      # TypeScript types
+```
+
+## Error Handling
+- Always wrap async operations in try-catch
+- Provide meaningful error messages
+- Include original error details when re-throwing
+
+## Tool Development Guidelines
+1. Each tool must have a clear, descriptive name
+2. Input schemas must be well-documented
+3. Return consistent success/error response formats
+4. Validate inputs using Zod schemas where appropriate
+5. Keep handlers focused on a single responsibility
+
+## Testing
+- Test each tool independently
+- Verify error handling works correctly
+- Check that all required environment variables are validated
+
+## Security
+- Never log sensitive information (API keys, tokens)
+- Validate all inputs
+- Use read-only operations where specified (e.g., Supabase)
+- Sanitize any user-provided content in generators
+
+## Environment Variables
+Required:
+- LINEAR_API_KEY
+- SUPABASE_URL
+- SUPABASE_ANON_KEY
+- VERCEL_TOKEN
+
+Optional:
+- VERCEL_TEAM_ID
+- MCP_SERVER_PORT
+- NODE_ENV 

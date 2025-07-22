@@ -1,8 +1,7 @@
 import { execa } from 'execa';
-import { Tool, ScaffoldingSchema } from '../utils/types.js';
+import { Tool } from '../utils/types.js';
 import fs from 'fs-extra';
 import path from 'path';
-import os from 'os';
 
 export const scaffoldingTools: Tool[] = [
   {
@@ -85,7 +84,7 @@ export const scaffoldingTools: Tool[] = [
         ].filter(Boolean) as string[];
 
         // Execute create-next-app
-        const { stdout, stderr } = await execa('npx', commandArgs, {
+        await execa('npx', commandArgs, {
           cwd: directory,
           env: {
             ...process.env,
@@ -94,7 +93,7 @@ export const scaffoldingTools: Tool[] = [
         });
 
         // Add additional configuration files
-        const additionalConfigs = {
+        const additionalConfigs: Record<string, string> = {
           // Add .env.example
           '.env.example': `# Environment variables
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
@@ -201,7 +200,7 @@ DATABASE_URL=
         }
 
         // Create Vite project
-        const { stdout, stderr } = await execa('npm', [
+        await execa('npm', [
           'create',
           'vite@latest',
           projectName,
@@ -218,7 +217,7 @@ DATABASE_URL=
 
         // Add additional configuration for React projects
         if (template.includes('react')) {
-          const additionalConfigs = {
+          const additionalConfigs: Record<string, string> = {
             // Add .env.example
             '.env.example': `# Environment variables
 VITE_API_URL=http://localhost:3000/api
@@ -359,7 +358,7 @@ export default defineConfig({
         const installCommand = dev ? 'install' : 'install';
         const installArgs = [installCommand, ...(dev ? ['--save-dev'] : []), ...dependencies];
 
-        const { stdout, stderr } = await execa('npm', installArgs, {
+        await execa('npm', installArgs, {
           cwd: projectPath,
         });
 

@@ -6,12 +6,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import dotenv from 'dotenv';
 
-// Import tools
-import { linearTools } from './tools/linear.js';
-import { supabaseTools } from './tools/supabase.js';
-import { vercelTools } from './tools/vercel.js';
-import { scaffoldingTools } from './tools/scaffolding.js';
-import { generatorTools } from './tools/generator.js';
+import { linearTools, supabaseTools, vercelTools, scaffoldingTools, generatorTools } from './tools';
 
 // Load environment variables
 dotenv.config();

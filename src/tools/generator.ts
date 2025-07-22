@@ -1,4 +1,4 @@
-import { Tool, GeneratorSchema } from '../utils/types.js';
+import { Tool } from '../utils/types.js';
 
 // PRD Template
 const generatePRD = (context: string, prompt: string): string => {
@@ -564,23 +564,23 @@ ${includePatterns.includes('test-driven') ? 'projectRules.testing.coverage.state
 ${description}
 
 ## Technology Stack
-${techStack.map(tech => `- ${tech}`).join('\n')}
+${techStack.map((tech: string) => `- ${tech}`).join('\n')}
 
 ## Architecture Overview
 This project follows a modern architecture pattern with clear separation of concerns:
 
 ### Frontend
-- **Framework**: ${techStack.find(t => ['React', 'Vue', 'Angular', 'Svelte'].some(f => t.includes(f))) || 'Not specified'}
-- **State Management**: ${techStack.find(t => ['Redux', 'Zustand', 'MobX', 'Pinia'].some(s => t.includes(s))) || 'Local state'}
-- **Styling**: ${techStack.find(t => ['Tailwind', 'CSS', 'Styled Components', 'Emotion'].some(s => t.includes(s))) || 'CSS Modules'}
+- **Framework**: ${techStack.find((t: string) => ['React', 'Vue', 'Angular', 'Svelte'].some(f => t.includes(f))) || 'Not specified'}
+- **State Management**: ${techStack.find((t: string) => ['Redux', 'Zustand', 'MobX', 'Pinia'].some(s => t.includes(s))) || 'Local state'}
+- **Styling**: ${techStack.find((t: string) => ['Tailwind', 'CSS', 'Styled Components', 'Emotion'].some(s => t.includes(s))) || 'CSS Modules'}
 
 ### Backend
-- **Runtime**: ${techStack.find(t => ['Node.js', 'Deno', 'Bun'].some(r => t.includes(r))) || 'Not specified'}
-- **Framework**: ${techStack.find(t => ['Express', 'Fastify', 'Hapi', 'Koa'].some(f => t.includes(f))) || 'Not specified'}
-- **Database**: ${techStack.find(t => ['PostgreSQL', 'MySQL', 'MongoDB', 'SQLite'].some(db => t.includes(db))) || 'Not specified'}
+- **Runtime**: ${techStack.find((t: string) => ['Node.js', 'Deno', 'Bun'].some(r => t.includes(r))) || 'Not specified'}
+- **Framework**: ${techStack.find((t: string) => ['Express', 'Fastify', 'Hapi', 'Koa'].some(f => t.includes(f))) || 'Not specified'}
+- **Database**: ${techStack.find((t: string) => ['PostgreSQL', 'MySQL', 'MongoDB', 'SQLite'].some(db => t.includes(db))) || 'Not specified'}
 
 ## API Reference
-${apis.length > 0 ? apis.map(api => `
+${apis.length > 0 ? apis.map((api: any) => `
 ### ${api.name}
 - **Endpoint**: ${api.endpoint}
 - **Methods**: ${api.methods?.join(', ') || 'GET'}

@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Tool, SupabaseQuerySchema } from '../utils/types.js';
+import { Tool } from '../utils/types.js';
 
 // Initialize Supabase client
 const getSupabaseClient = () => {
@@ -126,13 +126,14 @@ export const supabaseTools: Tool[] = [
         const params = new URLSearchParams(queryString);
 
         let supabaseQuery = supabase.from(tablePart);
+        let selectQuery: any = null;
 
         // Handle select
         const selectParam = params.get('select');
         if (selectParam) {
-          supabaseQuery = supabaseQuery.select(selectParam);
+          selectQuery = supabaseQuery.select(selectParam);
         } else {
-          supabaseQuery = supabaseQuery.select('*');
+          selectQuery = supabaseQuery.select('*');
         }
 
         // Handle filters
@@ -142,9 +143,9 @@ export const supabaseTools: Tool[] = [
             const match = value.match(/^(eq|neq|gt|gte|lt|lte|like|ilike|in|is)\.(.*)/);
             if (match) {
               const [, operator, operand] = match;
-              (supabaseQuery as any)[operator](key, operand);
+              selectQuery = (selectQuery as any)[operator](key, operand);
             } else {
-              supabaseQuery = supabaseQuery.eq(key, value);
+              selectQuery = selectQuery.eq(key, value);
             }
           }
         });
@@ -153,7 +154,7 @@ export const supabaseTools: Tool[] = [
         const orderParam = params.get('order');
         if (orderParam) {
           const [column, direction] = orderParam.split('.');
-          supabaseQuery = supabaseQuery.order(column, { ascending: direction !== 'desc' });
+          selectQuery = selectQuery.order(column, { ascending: direction !== 'desc' });
         }
 
         // Handle limit and offset
@@ -162,10 +163,10 @@ export const supabaseTools: Tool[] = [
         if (limit || offset) {
           const startIndex = parseInt(offset || '0');
           const endIndex = startIndex + parseInt(limit || '100') - 1;
-          supabaseQuery = supabaseQuery.range(startIndex, endIndex);
+          selectQuery = selectQuery.range(startIndex, endIndex);
         }
 
-        const { data, error } = await supabaseQuery;
+        const { data, error } = await selectQuery;
 
         if (error) {
           throw error;
