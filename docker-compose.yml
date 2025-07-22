@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  scopey-mcp:
+    build: .
+    image: scopey/mcp-server:latest
+    container_name: scopey-mcp-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LINEAR_API_KEY=${LINEAR_API_KEY}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - VERCEL_TOKEN=${VERCEL_TOKEN}
+      - VERCEL_TEAM_ID=${VERCEL_TEAM_ID}
+    stdin_open: true
+    tty: true
+    volumes:
+      # Optional: Mount local .env file
+      - ./.env:/app/.env:ro
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge 
